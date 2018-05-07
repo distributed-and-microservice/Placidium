@@ -4,6 +4,12 @@
 # Log file
 *.log
 
+placidium-show/
+.DS_Store
+.idea/
+.vscode/
+*.iml
+target/
 # BlueJ files
 *.ctxt
 
