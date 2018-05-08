@@ -16,11 +16,11 @@
 package cn.fanhub.placidium.manage.impl;
 
 import cn.fanhub.irelia.core.model.IreliaBean;
+import cn.fanhub.irelia.core.model.RpcConfig;
 import cn.fanhub.irelia.core.spi.IreliaService;
 import cn.fanhub.irelia.upstream.dubbo.DubboServiceManager;
 import cn.fanhub.irelia.upstream.dubbo.DubboUpstreamConfig;
 import cn.fanhub.placidium.manage.SystemManager;
-import cn.fanhub.placidium.model.RpcConfigImpl;
 import cn.fanhub.placidium.model.entity.RpcInfo;
 import cn.fanhub.placidium.model.entity.SystemInfo;
 import cn.fanhub.placidium.model.request.RegisterModel;
@@ -64,7 +64,7 @@ public class SystemManagerImpl implements SystemManager {
             List<IreliaBean> ireliaBeans = register.getIreliaServiceHolder().getBeansBySysName(sysName);
 
             for (IreliaBean ireliaBean : ireliaBeans) {
-                RpcConfigImpl rpcConfig = new RpcConfigImpl();
+                RpcConfig rpcConfig = new RpcConfig();
                 rpcConfig.setAppName(sysName);
                 rpcConfig.setMethodName(ireliaBean.getMethodInfo().getMethodName());
                 rpcConfig.setRpcValue(ireliaBean.getRpcValue());

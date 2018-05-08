@@ -15,7 +15,7 @@
  */
 package cn.fanhub.placidium.controller;
 
-import cn.fanhub.placidium.model.RpcConfigImpl;
+import cn.fanhub.irelia.core.model.RpcConfig;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,6 +26,10 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/rpc")
-public class RpcController extends BaseCRUDController<RpcConfigImpl, Long> {
+public class RpcController extends BaseCRUDController<RpcConfig, Long> {
 
+    //@RequestMapping(value = "/invoke", method = RequestMethod.POST)
+    //public Result<IreliaResponse> invokeRpc(@RequestBody RpcRequest rpcRequest) {
+    //
+    //}
 }

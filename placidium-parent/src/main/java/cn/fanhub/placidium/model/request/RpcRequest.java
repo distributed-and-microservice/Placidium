@@ -13,20 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package cn.fanhub.placidium.model;
+package cn.fanhub.placidium.model.request;
 
-import cn.fanhub.irelia.core.model.RpcConfig;
 import lombok.Data;
 
 /**
  *
  * @author chengfan
- * @version $Id: RpcConfigImpl.java, v 0.1 2018年05月01日 下午3:51 chengfan Exp $
+ * @version $Id: RpcRequest.java, v 0.1 2018年05月07日 下午10:37 chengfan Exp $
  */
 @Data
-public class RpcConfigImpl implements RpcConfig {
-    private String itfName;
-    private String methodName;
-    private String appName;
+public class RpcRequest {
+    private String version;
     private String rpcValue;
 }
