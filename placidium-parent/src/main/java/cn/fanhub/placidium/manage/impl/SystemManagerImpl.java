@@ -15,9 +15,8 @@
  */
 package cn.fanhub.placidium.manage.impl;
 
-import cn.fanhub.irelia.core.model.IreliaBean;
 import cn.fanhub.irelia.core.model.RpcConfig;
-import cn.fanhub.irelia.core.spi.IreliaService;
+import cn.fanhub.irelia.spi.core.IreliaService;
 import cn.fanhub.irelia.upstream.dubbo.DubboServiceManager;
 import cn.fanhub.irelia.upstream.dubbo.DubboUpstreamConfig;
 import cn.fanhub.placidium.manage.SystemManager;
@@ -61,21 +60,16 @@ public class SystemManagerImpl implements SystemManager {
 
         try {
             IreliaService register = DubboServiceManager.getInstance().register(config);
-            List<IreliaBean> ireliaBeans = register.getIreliaServiceHolder().getBeansBySysName(sysName);
+            List<RpcConfig> rpcConfigList = register.getIreliaServiceHolder().getRpcConfig(sysName);
 
-            for (IreliaBean ireliaBean : ireliaBeans) {
-                RpcConfig rpcConfig = new RpcConfig();
-                rpcConfig.setAppName(sysName);
-                rpcConfig.setMethodName(ireliaBean.getMethodInfo().getMethodName());
-                rpcConfig.setRpcValue(ireliaBean.getRpcValue());
-                rpcConfig.setItfName(ireliaBean.getMethodInfo().getItf());
+            for (RpcConfig rpcConfig : rpcConfigList) {
 
                 RpcInfo rpcInfo = new RpcInfo();
                 rpcInfo.setCreateTime(date);
-                rpcInfo.setDes(ireliaBean.getDes());
-                rpcInfo.setRpcValue(ireliaBean.getRpcValue());
+                rpcInfo.setDes(rpcConfig.getDes());
+                rpcInfo.setRpcValue(rpcConfig.getRpcValue());
                 rpcInfo.setRpcConfig(rpcConfig);
-                rpcInfo.setName(ireliaBean.getRpcName());
+                rpcInfo.setName(rpcConfig.getRpcName());
 
                 rpcInfoService.save(rpcInfo);
             }
