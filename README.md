@@ -1,6 +1,6 @@
 # Placidium
 
-An implemention of Irelia
+An implementation of [Irelia](https://github.com/distributed-and-microservice/Irelia)
 
 ## 如何使用
 
