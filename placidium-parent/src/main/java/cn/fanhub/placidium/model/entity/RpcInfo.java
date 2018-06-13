@@ -34,12 +34,13 @@ import java.util.Date;
 public class RpcInfo {
     @GeneratedValue
     @Id
-    private long          id;
-    private String        rpcValue;
-    private String        name;
-    private String        des;
-    private Date          createTime;
-    private String        updateTime;
+    private long id;
+    private String rpcValue;
+    private String name;
+    private String des;
+    private Date createTime;
+    private String updateTime;
+    private boolean open = false;
 
     private String rpcConfig;
 

@@ -20,9 +20,9 @@ import cn.fanhub.placidium.model.entity.SystemInfo;
 /**
  *
  * @author chengfan
- * @version $Id: SysTemInfoRepository.java, v 0.1 2018年05月06日 下午6:06 chengfan Exp $
+ * @version $Id: SystemInfoRepository.java, v 0.1 2018年05月06日 下午6:06 chengfan Exp $
  */
-public interface SysTemInfoRepository extends BaseRepository<SystemInfo, Long> {
+public interface SystemInfoRepository extends BaseRepository<SystemInfo, Long> {
 
     SystemInfo getByName(String sysName);
 }

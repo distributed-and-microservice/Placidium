@@ -19,7 +19,9 @@ import cn.fanhub.placidium.manage.SystemManager;
 import cn.fanhub.placidium.model.request.RegisterModel;
 import cn.fanhub.placidium.model.Result;
 import cn.fanhub.placidium.model.entity.SystemInfo;
+import cn.fanhub.placidium.service.SystemInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,6 +38,9 @@ public class SystemController extends BaseCRUDController<SystemInfo, Long> {
     @Autowired
     private SystemManager systemManager;
 
+    @Autowired
+    private SystemInfoService systemInfoService;
+
     @RequestMapping("/register")
     public Result register(@RequestBody RegisterModel model) {
         if (systemManager.register(model)) {
@@ -43,4 +48,14 @@ public class SystemController extends BaseCRUDController<SystemInfo, Long> {
         }
         return Result.errorMessage("error");
     }
+
+    @GetMapping("/hhh")
+    public String hhh() {
+        return "hhhh";
+    }
+
+    //@Override
+    //void setBaseService() {
+    //   super.baseService = systemInfoService;
+    //}
 }

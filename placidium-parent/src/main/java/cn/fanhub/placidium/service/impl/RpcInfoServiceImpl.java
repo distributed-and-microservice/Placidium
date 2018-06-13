@@ -26,7 +26,7 @@ import org.springframework.stereotype.Service;
  * @author chengfan
  * @version $Id: RpcInfoServiceImpl.java, v 0.1 2018年05月05日 下午4:29 chengfan Exp $
  */
-@Service("rpcInfoService")
+@Service
 public class RpcInfoServiceImpl extends BaseServiceImpl<RpcInfo, Long> implements RpcInfoService {
 
     @Autowired

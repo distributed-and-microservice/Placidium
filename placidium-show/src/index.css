@@ -1,0 +1,5 @@
+
+html, body, :global(#root), :global(.ant-layout) {
+  height: 100%;
+}
+

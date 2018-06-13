@@ -16,7 +16,7 @@
 package cn.fanhub.placidium.service.impl;
 
 import cn.fanhub.placidium.model.entity.SystemInfo;
-import cn.fanhub.placidium.repository.SysTemInfoRepository;
+import cn.fanhub.placidium.repository.SystemInfoRepository;
 import cn.fanhub.placidium.service.SystemInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,11 +26,11 @@ import org.springframework.stereotype.Service;
  * @author chengfan
  * @version $Id: SystemInfoServiceImpl.java, v 0.1 2018年05月05日 下午4:31 chengfan Exp $
  */
-@Service("systemInfoService")
+@Service
 public class SystemInfoServiceImpl extends BaseServiceImpl<SystemInfo, Long> implements SystemInfoService {
 
     @Autowired
-    private SysTemInfoRepository sysTemInfoRepository;
+    private SystemInfoRepository sysTemInfoRepository;
 
     @Override
     public SystemInfo getByName(String sysName) {

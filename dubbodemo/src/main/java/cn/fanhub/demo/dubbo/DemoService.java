@@ -25,6 +25,8 @@ import java.io.Serializable;
  * @version $Id: DemoService.java, v 0.1 2018年05月08日 下午10:31 chengfan Exp $
  */
 public interface DemoService extends Serializable {
-    @Rpc(value = "cn.fanhub.dubbo.sayhello", name = "testName", desc = "testDes")
+    @Rpc(value = "cn.fanhub.dubbo.sayhello",
+         name = "testName",
+         desc = "testDes")
     String sayHello(String name);
 }
