@@ -1,4 +1,4 @@
-import { queryAll, saveSystem } from '../services/System'
+import { queryAll, saveSystem, updateSystem } from '../services/System'
 export default {
 
   namespace: 'system',
@@ -13,7 +13,7 @@ export default {
   },
 
   effects: {
-    *fetchAll({ payload }, { call, put }) {  // eslint-disable-line
+    * fetchAll({ payload }, { call, put }) {  // eslint-disable-line
       const { data } = yield call(queryAll);
       if (data.success) {
         yield put({
@@ -24,8 +24,17 @@ export default {
         });
       }
     },
-    *addSystem({ payload, success,error }, { call, put }) {
+    * addSystem({ payload, success,error }, { call, put }) {
       const { data } = yield call(saveSystem, payload);
+      if(data && data.success) {
+        success();
+      } else {
+        error();
+      }
+    },
+    * updateSystem({ payload, success, error }, { call, put }) {
+      console.log(payload)
+      const { data } = yield call(updateSystem, payload);
       if(data && data.success) {
         success();
       } else {

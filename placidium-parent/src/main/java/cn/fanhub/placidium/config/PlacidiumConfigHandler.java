@@ -16,6 +16,7 @@
 package cn.fanhub.placidium.config;
 
 import cn.fanhub.irelia.core.model.RpcConfig;
+import cn.fanhub.irelia.core.model.SystemConfig;
 import cn.fanhub.irelia.core.upstream.UpstreamConfig;
 import cn.fanhub.irelia.server.handler.AbstractConfigHandler;
 import cn.fanhub.irelia.upstream.dubbo.DubboUpstreamConfig;
@@ -51,9 +52,16 @@ public class PlacidiumConfigHandler extends AbstractConfigHandler {
         upstreamConfig.setUsername("cf");
         upstreamConfig.setPassword("123");
         upstreamConfig.setAppName(sysName);
-        upstreamConfig.setName(sysName);
+        upstreamConfig.setName(systemInfo.getUpstreamType());
         upstreamConfig.setAddress(systemInfo.getRegisterUrl());
         return upstreamConfig;
     }
 
+    @Override
+    public SystemConfig getSystemConfig(String sysName) {
+        SystemInfo systemInfo = systemInfoService.getByName(sysName);
+        SystemConfig systemConfig = new SystemConfig();
+        systemConfig.setPublicKey(systemInfo.getPublicKey());
+        return systemConfig;
+    }
 }

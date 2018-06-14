@@ -1,4 +1,4 @@
-import { queryAll, queryOne } from '../services/Rpc'
+import { queryAll, queryOne, updateOne } from '../services/Rpc'
 export default {
 
   namespace: 'rpc',
@@ -28,6 +28,14 @@ export default {
       const { data } = yield call(queryOne, payload);
       if (data.success) {
         success(data.value);
+      }
+    },
+    *updateRpc({ payload, success, error }, { call, put }) {
+      const { data } = yield call(updateOne, payload);
+      if (data.success) {
+        success(data.value);
+      } else {
+        error(data.errorMessage);
       }
     }
   },

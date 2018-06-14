@@ -70,6 +70,7 @@ public class SystemManagerImpl implements SystemManager {
                 rpcInfo.setRpcValue(rpcConfig.getRpcValue());
                 rpcInfo.setRpcConfig(rpcConfig);
                 rpcInfo.setName(rpcConfig.getRpcName());
+                rpcInfo.setSysName(model.getSysName());
                 rpcInfo.setRpcConfig(rpcConfig);
 
                 rpcInfoService.save(rpcInfo);

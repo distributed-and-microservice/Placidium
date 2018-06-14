@@ -37,4 +37,5 @@ public class SystemInfo {
     private String upstreamType;
     private String registerUrl;
     private Date createTime;
+    private String publicKey;
 }

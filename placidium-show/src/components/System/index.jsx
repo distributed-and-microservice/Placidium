@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Table, Divider, Button, Modal, Form, Input, message} from 'antd';
+import { Table, Divider, Button, Modal, Form, Input, message } from 'antd';
+import EditModal from "./EditModal";
 
 const { Column } = Table;
 const FormItem = Form.Item;
@@ -10,7 +11,8 @@ class System extends React.Component {
 
   state = {
     registerVisible: false,
-    editVisible: false
+    editVisible: false,
+    currentSystem: {},
   }
 
   componentDidMount() {
@@ -25,6 +27,14 @@ class System extends React.Component {
 
   handleOpenRegister = () => {
     this.setState({ registerVisible: true });
+  }
+
+  handleCancelEdit = () => {
+    this.setState({ editVisible: false });
+  }
+
+  handleOpenEdit = (record) => {
+    this.setState({ editVisible: true, currentSystem: record });
   }
 
   handleSubmitRegister = (e) => {
@@ -43,7 +53,22 @@ class System extends React.Component {
             this.setState({ registerVisible: false })
           }
         });
-        
+      }
+    });
+  }
+
+  handleSubmitEdit = (value) => {
+    console.log(value)
+    this.props.dispatch({
+      type: 'system/updateSystem',
+      payload: value,
+      success: (value) => {
+        message.success("更新成功");
+        this.setState({ editVisible: false })
+      },
+      error: (err) => {
+        message.err("更新失败：" + err);
+        this.setState({ editVisible: false })
       }
     });
   }
@@ -53,12 +78,12 @@ class System extends React.Component {
 
     const formItemLayout = {
       labelCol: {
-        xs: { span: 24 },
+        xs: { span: 16 },
         sm: { span: 8 },
       },
       wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 16 },
+        xs: { span: 16 },
+        sm: { span: 12 },
       },
     };
 
@@ -97,7 +122,7 @@ class System extends React.Component {
             rowKey="action"
             render={(text, record) => (
               <span>
-                <a href="javascript:;">编辑</a>
+                <a onClick={() => this.handleOpenEdit(record)}>编辑</a>
                 <Divider type="vertical" />
                 <a href="javascript:;">删除</a>
               </span>
@@ -108,6 +133,7 @@ class System extends React.Component {
         title="注册系统"
         visible={this.state.registerVisible}
         onCancel={this.handleCancelRegister}
+        footer={null}
       >
         <Form onSubmit={this.handleSubmitRegister}>
           <FormItem
@@ -147,11 +173,16 @@ class System extends React.Component {
             )}
           </FormItem>
           <FormItem {...formItemLayoutWithOutLabel}>
-            <Button type="primary" htmlType="submit">Submit</Button>
+            <Button type="primary" htmlType="submit">注册</Button>
           </FormItem>
         </Form>
       </Modal>
-      
+      <EditModal 
+        editVisible={this.state.editVisible}
+        currentSystem={this.state.currentSystem}
+        handleCancelEdit={this.handleCancelEdit}
+        handleSubmitEdit={this.handleSubmitEdit}
+      />
     </div>
     );
   }

@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.Serializable;
 import java.util.List;
@@ -65,7 +66,7 @@ public abstract class BaseCRUDController <T, ID extends Serializable>{
      * @return the result
      */
     @PutMapping
-    public Result<T> update(T t) {
+    public Result<T> update(@RequestBody T t) {
         return Result.of(baseService.update(t));
     }
 
@@ -91,6 +92,4 @@ public abstract class BaseCRUDController <T, ID extends Serializable>{
         baseService.delete(t);
         return Result.success();
     }
-
-    //abstract void setBaseService();
 }

@@ -1,11 +1,9 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
-import { Table, Divider, Button, Modal, Form, Input, message} from 'antd';
+import { Table, Divider, Form } from 'antd';
 
 const { Column } = Table;
-const FormItem = Form.Item;
-
 
 class Rpc extends React.Component {
 
@@ -38,6 +36,11 @@ class Rpc extends React.Component {
                 {text ? "开启" : "关闭"}
               </span>
             )}
+          />
+          <Column
+            title="系统"
+            dataIndex="sysName"
+            rowKey="sysName"
           />
           <Column
             title="创建时间"

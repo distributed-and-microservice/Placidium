@@ -19,6 +19,7 @@ import cn.fanhub.irelia.server.Bootstrap;
 import cn.fanhub.irelia.server.handler.HttpInboundHandler;
 import cn.fanhub.irelia.server.handler.RouteHandler;
 import cn.fanhub.irelia.server.handler.SecurityHandler;
+import cn.fanhub.irelia.server.handler.limit.SimpleLimitHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -45,6 +46,11 @@ public class IreliaConfig {
     @Bean
     public SecurityHandler securityHandler() {
         return new SecurityHandler();
+    }
+
+    @Bean
+    public SimpleLimitHandler simpleLimitHandler() {
+        return new SimpleLimitHandler();
     }
 
     // 启动网关

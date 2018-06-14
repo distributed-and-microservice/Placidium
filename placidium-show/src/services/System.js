@@ -13,3 +13,13 @@ export async function saveSystem(payload) {
     body: JSON.stringify(payload),
   });
 }
+
+export async function updateSystem(payload) {
+  return request(`http://localhost:8080/system`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    },
+    body: JSON.stringify(payload),
+  });
+}

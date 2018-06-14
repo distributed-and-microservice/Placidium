@@ -17,6 +17,7 @@ package cn.fanhub.placidium.model.entity;
 
 import cn.fanhub.irelia.core.model.RpcConfig;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -40,15 +41,19 @@ public class RpcInfo {
     private String des;
     private Date createTime;
     private String updateTime;
-    private boolean open = false;
+    private String sysName;
+    private boolean open;
 
     private String rpcConfig;
 
     public RpcConfig getRpcConfig() {
-        return JSON.parseObject(rpcConfig, RpcConfig.class);
+        RpcConfig rpcConfig = JSONObject.parseObject(this.rpcConfig, RpcConfig.class);
+        rpcConfig.setOpen(this.open);
+        return rpcConfig;
     }
 
     public void setRpcConfig(RpcConfig rpcConfig) {
+        rpcConfig.setOpen(this.open);
         this.rpcConfig = JSON.toJSONString(rpcConfig);
     }
 }

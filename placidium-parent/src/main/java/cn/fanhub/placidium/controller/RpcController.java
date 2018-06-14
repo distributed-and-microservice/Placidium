@@ -33,13 +33,4 @@ public class RpcController extends BaseCRUDController<RpcInfo, Long> {
     @Autowired
     private RpcInfoService rpcInfoService;
 
-    //@Override
-    //void setBaseService() {
-    //    super.baseService = rpcInfoService;
-    //}
-
-    //@RequestMapping(value = "/invoke", method = RequestMethod.POST)
-    //public Result<IreliaResponse> invokeRpc(@RequestBody RpcRequest rpcRequest) {
-    //
-    //}
 }
