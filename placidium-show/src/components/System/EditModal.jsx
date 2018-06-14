@@ -1,8 +1,6 @@
 import React from 'react';
-import { connect } from 'dva';
-import { Table, Divider, Button, Modal, Form, Input, message } from 'antd';
+import { Button, Modal, Form, Input } from 'antd';
 
-const { Column } = Table;
 const { TextArea } = Input;
 const FormItem = Form.Item;
 

@@ -19,9 +19,12 @@ import cn.fanhub.irelia.server.Bootstrap;
 import cn.fanhub.irelia.server.handler.HttpInboundHandler;
 import cn.fanhub.irelia.server.handler.RouteHandler;
 import cn.fanhub.irelia.server.handler.SecurityHandler;
+import cn.fanhub.irelia.server.handler.cache.SimpleCacheHandler;
+import cn.fanhub.irelia.server.handler.error.ErrorHandler;
 import cn.fanhub.irelia.server.handler.limit.SimpleLimitHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 
 /**
  *
@@ -48,9 +51,22 @@ public class IreliaConfig {
         return new SecurityHandler();
     }
 
+    // 添加令牌桶限流组件
     @Bean
     public SimpleLimitHandler simpleLimitHandler() {
         return new SimpleLimitHandler();
+    }
+
+    // 添加响应缓存组件
+    @Bean
+    public SimpleCacheHandler simpleCacheHandler() {
+        return new SimpleCacheHandler();
+    }
+
+    // 添加全局异常处理组件
+    @Bean
+    public ErrorHandler errorHandler() {
+        return new ErrorHandler();
     }
 
     // 启动网关
